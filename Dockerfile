@@ -50,6 +50,7 @@ RUN apt-get update \
 		npm \
 		jq \
 		file \
+		wiggle \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
