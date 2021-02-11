@@ -9,7 +9,49 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y curl lsb-release software-properties-common apt-transport-https ca-certificates gnupg2  && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" && curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 # Update Debian and Install Yocto Proyect Quick Start and Balena dependencies
-RUN apt-get update && apt-get install -y locales gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm cpio curl python python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa pylint3 xterm dos2unix vim sudo chrpath gawk docker-ce docker-ce-cli containerd.io nodejs npm jq file && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update \
+	&& apt-get install -y \
+		locales \
+		gawk \
+		wget \
+		git-core \
+		diffstat \
+		unzip \
+		texinfo \
+		gcc-multilib \
+		build-essential \
+		chrpath \
+		socat \
+		libsdl1.2-dev \
+		xterm \
+		cpio \
+		curl \
+		python \
+		python3 \
+		python3-pip \
+		python3-pexpect \
+		xz-utils \
+		debianutils \
+		iputils-ping \
+		python3-git \
+		python3-jinja2 \
+		libegl1-mesa \
+		pylint3 \
+		xterm \
+		dos2unix \
+		vim \
+		sudo \
+		chrpath \
+		gawk \
+		docker-ce \
+		docker-ce-cli \
+		containerd.io \
+		nodejs \
+		npm \
+		jq \
+		file \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set bash as default shell
 RUN echo "dash dash/sh boolean false" | debconf-set-selections - && dpkg-reconfigure dash
